@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-const request = 'https://api.hgbrasil.com/finance?format=json&key=694f75e1';
+const request = 'https://api.hgbrasil.com/finance?key=44379bd9';
 
 class HomeController extends GetxController {
   Future<Map> getData() async {
@@ -29,7 +29,7 @@ class HomeController extends GetxController {
     if (text.isNotEmpty) {
       final real = double.parse(text);
       dolarController.text = (real / dolar).toStringAsFixed(2);
-      euroController.text = (real / dolar).toStringAsFixed(2);
+      euroController.text = (real / euro).toStringAsFixed(2);
     } else {
       realController.text;
       dolarController.text;
@@ -52,7 +52,7 @@ class HomeController extends GetxController {
   void euroChanged(String text) {
     if (text.isNotEmpty) {
       double euro = double.parse(text);
-      euroController.text = (euro * this.euro).toStringAsFixed(2);
+      realController.text = (euro * this.euro).toStringAsFixed(2);
       dolarController.text = (euro * this.euro / dolar).toStringAsFixed(2);
     } else {
       realController.text;
