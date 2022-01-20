@@ -12,7 +12,11 @@ class FormWidget extends GetView<HomeController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Icon(Icons.monetization_on, size: 150, color: Colors.amber),
+          const Icon(
+            Icons.monetization_on,
+            size: 150,
+            color: Colors.amber,
+          ),
           controller.buildTextField(
             'Real',
             'R\$ ',

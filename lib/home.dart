@@ -16,32 +16,33 @@ class HomePage extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: FutureBuilder<Map>(
-          future: controller.getData(),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.none:
-              case ConnectionState.waiting:
+        future: controller.getData(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+              return const Center(
+                child: Text(
+                  'Carregando dados',
+                  style: TextStyle(color: Colors.amber, fontSize: 25),
+                  textAlign: TextAlign.center,
+                ),
+              );
+            default:
+              if (snapshot.hasError) {
                 return const Center(
-                  child: Text(
-                    'Carregando dados',
-                    style: TextStyle(color: Colors.amber, fontSize: 25),
-                    textAlign: TextAlign.center,
-                  ),
+                  child: Text('Erro ao carregar dados'),
                 );
-              default:
-                if (snapshot.hasError) {
-                  return const Center(
-                    child: Text('Erro ao carregar dados'),
-                  );
-                } else {
-                  controller.dolar =
-                      snapshot.data!['results']['currencies']['USD']['buy'];
-                  controller.euro =
-                      snapshot.data!['results']['currencies']['EUR']['buy'];
-                  return const FormWidget();
-                }
-            }
-          }),
+              } else {
+                controller.dolar =
+                    snapshot.data!['results']['currencies']['USD']['buy'];
+                controller.euro =
+                    snapshot.data!['results']['currencies']['EUR']['buy'];
+                return const FormWidget();
+              }
+          }
+        },
+      ),
     );
   }
 }

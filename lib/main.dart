@@ -10,16 +10,21 @@ void main() {
       initialRoute: '/home',
       getPages: [
         GetPage(
-            name: '/home', page: () => const HomePage(), binding: Binging()),
+          name: '/home',
+          page: () => const HomePage(),
+          binding: Binging(),
+        ),
       ],
       theme: ThemeData(
         hintColor: Colors.amber,
         primaryColor: Colors.white,
         inputDecorationTheme: const InputDecorationTheme(
-          enabledBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-          focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.amber)),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.amber),
+          ),
           hintStyle: TextStyle(color: Colors.amber),
         ),
       ),

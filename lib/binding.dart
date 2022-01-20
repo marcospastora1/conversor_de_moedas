@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 class Binging extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HomeController>(() => HomeController());
+    Get.lazyPut<HomeController>(
+      () => HomeController(),
+    );
   }
 }
